@@ -58,11 +58,11 @@ static const NSTimeInterval kBackwardCompleteAnimationDuration = 0.18;
     
     // Add a alphaView To be overexposed, so background becomes dark in animation
     UIView *alphaView = [[UIView alloc] initWithFrame:[transitionContext finalFrameForViewController:toVC]];
-    alphaView.backgroundColor = [self.sourceTransition transitionSourceBackgroundColor];
+    alphaView.backgroundColor = [self.sourceTransition transitionSourceBackgroundColor :self.goingForward];
     [containerView addSubview:alphaView];
     
     // Transition source of image to move me to add to the last
-    UIImageView *sourceImageView = [self.sourceTransition transitionSourceImageView];
+    UIImageView *sourceImageView = [self.sourceTransition transitionSourceImageView :self.goingForward];
     [containerView addSubview:sourceImageView];
     
     if (self.goingForward) {
@@ -70,7 +70,7 @@ static const NSTimeInterval kBackwardCompleteAnimationDuration = 0.18;
                               delay:0
                             options:UIViewAnimationOptionCurveEaseOut
                          animations:^{
-                             sourceImageView.frame = [self.destinationTransition transitionDestinationImageViewFrame];
+                             sourceImageView.frame = [self.destinationTransition transitionDestinationImageViewFrame :self.goingForward];
                              sourceImageView.transform = CGAffineTransformMakeScale(1.02, 1.02);
                              alphaView.alpha = 0.9;
                          }
@@ -103,7 +103,7 @@ static const NSTimeInterval kBackwardCompleteAnimationDuration = 0.18;
                               delay:0
                             options:UIViewAnimationOptionCurveEaseOut
                          animations:^{
-                             sourceImageView.frame = [self.destinationTransition transitionDestinationImageViewFrame];
+                             sourceImageView.frame = [self.destinationTransition transitionDestinationImageViewFrame :self.goingForward];
                              alphaView.alpha = 0;
                          }
                          completion:^(BOOL finished) {

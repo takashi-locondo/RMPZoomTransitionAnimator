@@ -39,7 +39,7 @@
  
  @return source view controller's UIImageView before transition.
  */
-- (UIImageView *)transitionSourceImageView;
+- (UIImageView *)transitionSourceImageView:(BOOL)goingForward;
 
 /**
  Return background color in source view controller.
@@ -49,14 +49,14 @@
  
  @return source view controller's bacground color
  */
-- (UIColor *)transitionSourceBackgroundColor;
+- (UIColor *)transitionSourceBackgroundColor:(BOOL)goingForward;
 
 /**
  Returns the UIImageView’s rectangle in a destination view controller.
  
  @return destination view controller's frame for UIImageView
  */
-- (CGRect)transitionDestinationImageViewFrame;
+- (CGRect)transitionDestinationImageViewFrame:(BOOL)goingForward;
 
 @end
 
